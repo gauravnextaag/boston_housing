@@ -12271,7 +12271,7 @@ Think about the pros and cons of adding more training points based on if the tra
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong> * max_depth =3 is the best model among these.As both training set and testing set are tend to converges at high score so this will be the better model . adding more tranning point will not help much
-As additional data points added ,the testing-set not as good as it was in Depth =3 . These graphs ,it seems, there is increase in Variance as training set score reaches to score touching 1 and testing-set failing down towards 0.6</p>
+As additional data points added ,the testing-set not as good as it was in Depth =3 . These graphs ,it seems, there is increase in Variance as training set and testing set not converging</p>
 
 </div>
 </div>
@@ -12433,7 +12433,7 @@ parameters = {'max_depth':[1,2,3,4,5,6,7],'min_samples_leaf':[1,2,3,4,5,6,7], 'm
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li>Dataset is split into K "folds" of equal size. Each fold acts as the testing set 1 time, and acts as the training set K-1 times. Average testing performance is used as the estimate of out-of-sample performance.It is more reliable estimate of out-of-sample performance than train/test split as it Reduce the variance of a single trial of a train/test split.</li>
+<li>We donot apply k-fold on the whole dataset. Instead we first split our data into train and test and then apply k-fold on the train dataset. This is how cross-validation works. Now after this step we train our model on (k-1) folds and use 1 fold for cross-validation. This process is repeated k times, each time with a different cross-validation set. The average cross-validation score is used to check the performance of the model. Once you have selected the best parameters using gridSearch along with k-fold cross-validation, we will use the test set to check the final performance of the model.</li>
 <li>As grid search tries to find the best searching parameters for the give set , it might ends up as variance model so its better to spilt data into k parts and then calculate best model/parameters suiting that data</li>
 </ul>
 
